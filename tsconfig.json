@@ -1,12 +1,13 @@
 {
     "compilerOptions": {
         "allowJs": false,
-        "target": "es2018",
+        "target": "es2021",
         "sourceMap": true,
         "strict": true,
         "noImplicitAny": true,
         "noImplicitReturns": true,
         "noImplicitThis": true,
+        "moduleResolution": "node",
         "incremental": true
     }
 }

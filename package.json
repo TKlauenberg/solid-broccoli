@@ -12,11 +12,13 @@
   "scripts": {
     "commit": "cz",
     "lerna": "lerna",
+    "cucumber": "cucumber-js",
     "lerna:publish": "lerna publish --yes",
     "lerna:test:version": "lerna version --no-git-tag-version --no-push",
     "lerna:test:publish": "lerna publish --no-git-tag-version --no-push"
   },
   "devDependencies": {
+    "@cucumber/cucumber": "^7.3.1",
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.32.0",

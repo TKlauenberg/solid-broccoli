@@ -1,0 +1,31 @@
+{
+  "name": "data-generation-lib",
+  "version": "0.0.0",
+  "description": "Library to create data with patterns",
+  "author": "Tobias Klauenberg <toklaui@live.de>",
+  "homepage": "https://github.com/TKlauenberg/solid-broccoli#readme",
+  "license": "MIT",
+  "main": "lib/data-generation-lib.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TKlauenberg/solid-broccoli.git"
+  },
+  "scripts": {
+    "cucumber": "cucumber-js",
+    "test": "cucumber-js"
+  },
+  "bugs": {
+    "url": "https://github.com/TKlauenberg/solid-broccoli/issues"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^7.3.1",
+    "@types/chai": "^4.2.22",
+    "chai": "^4.3.4"
+  }
+}
