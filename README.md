@@ -8,6 +8,9 @@ testdata management servic
       1. "####-####-####-####"
       2. data from lists
    2. random number
+   3. Dates
+   4. Lists/Objects
+      1. Schema
 2. data from backend
    1. first MongoDB
 3. Tagging of data

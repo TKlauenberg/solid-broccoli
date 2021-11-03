@@ -1,9 +1,7 @@
 const base = [
   '../../features/**/*.feature.md',
   '--publish-quiet',
-  `--format ${
-    process.env.CI || !process.stdout.isTTY ? 'progress' : 'progress-bar'
-  }`,
+  `--format '@serenity-js/cucumber'`,
   '--require features/stepdefs/**/*.js',
 ].join(' ');
 
