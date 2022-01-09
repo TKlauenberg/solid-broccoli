@@ -17,6 +17,7 @@
     "url": "git+https://github.com/TKlauenberg/solid-broccoli.git"
   },
   "scripts": {
+    "build": "tsc -p ./tsconfig.json",
     "cucumber": "cucumber-js",
     "test": "cucumber-js"
   },
@@ -29,6 +30,8 @@
     "@serenity-js/console-reporter": "^2.32.2",
     "@serenity-js/core": "^2.32.2",
     "@serenity-js/cucumber": "^2.32.2",
-    "@serenity-js/serenity-bdd": "^2.32.2"
+    "@serenity-js/serenity-bdd": "^2.32.2",
+    "@types/node": "^16.11.12",
+    "typescript": "^4.5.4"
   }
 }
