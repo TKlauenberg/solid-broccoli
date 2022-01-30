@@ -5,6 +5,9 @@ const base = [
   '--require features/stepdefs/**/*.js',
 ].join(' ');
 
+const generate = [base, `--format snippets:new.ts`];
+
 module.exports = {
-  default: base
+  default: base,
+  generate: generate,
 };

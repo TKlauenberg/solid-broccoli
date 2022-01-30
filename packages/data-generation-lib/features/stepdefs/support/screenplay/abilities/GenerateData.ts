@@ -9,6 +9,7 @@ export class GenerateData implements Ability {
   }
   currentDataType?: DataType;
   currentDataGenerator?: DataGenerator;
+  generatedData?: any;
   async createDataType(options: {
     name?: string;
     uuid?: string;
@@ -38,7 +39,12 @@ export class GenerateData implements Ability {
       res(newDataGenerator);
     });
   }
-  async generateData(dataGenerator: DataGenerator) {
-    return new Promise((res) => res(dataGenerator.generate()));
+  async generateData(dataGenerator?: DataGenerator) {
+    if (dataGenerator == undefined) {
+      dataGenerator = this.currentDataGenerator;
+    }
+    this.generatedData = await new Promise((res) =>
+      res(dataGenerator!.generate()),
+    );
   }
 }

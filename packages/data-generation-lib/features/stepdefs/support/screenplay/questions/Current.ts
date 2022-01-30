@@ -1,7 +1,12 @@
-import { AnswersQuestions, Question, UsesAbilities } from '@serenity-js/core';
+import { Question } from '@serenity-js/core';
 import { GenerateData } from '../abilities';
-import { CurrentDataGenerator } from './CurrentDataGenerator';
 
-export class Current {
-  static DataGenerator = new CurrentDataGenerator()
-}
+export const CurrentDataGenerator = Question.about<DataGenerator | undefined>(
+  `current Data Generator`,
+  (actor) => actor.abilityTo(GenerateData).currentDataGenerator,
+);
+
+export const CurrentGeneratedData = Question.about<any | undefined>(
+  `current generated data`,
+  (actor) => actor.abilityTo(GenerateData).generatedData,
+);
