@@ -16,7 +16,7 @@ Given(
     actorCalled(name).attemptsTo(CreateNumberGenerator.between(min).and(max)),
 );
 
-When('(he|she|they) generates a data entry', () =>
+When('he/she/they generates a data entry', () =>
   actorInTheSpotlight().attemptsTo(generateData),
 );
 

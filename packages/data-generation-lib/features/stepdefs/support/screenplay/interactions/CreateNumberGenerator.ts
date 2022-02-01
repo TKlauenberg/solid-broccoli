@@ -22,7 +22,7 @@ export class CreateNumberGenerator extends Interaction {
   async performAs(actor: UsesAbilities & AnswersQuestions): Promise<void> {
     const generateData = actor.abilityTo(GenerateData);
     const dataType = await generateData.createDataType({});
-    await generateData.createDataGenerator(dataType, this.betweenFunction);
+    await generateData.createRule('between', dataType, this.betweenFunction);
   }
 
   toString(): string {

@@ -1,9 +1,10 @@
 import { Question } from '@serenity-js/core';
+import { Rule } from '../../../../../lib';
 import { GenerateData } from '../abilities';
 
-export const CurrentDataGenerator = Question.about<DataGenerator | undefined>(
+export const CurrentRule = Question.about<Rule | undefined>(
   `current Data Generator`,
-  (actor) => actor.abilityTo(GenerateData).currentDataGenerator,
+  (actor) => actor.abilityTo(GenerateData).currentRule,
 );
 
 export const CurrentGeneratedData = Question.about<any | undefined>(

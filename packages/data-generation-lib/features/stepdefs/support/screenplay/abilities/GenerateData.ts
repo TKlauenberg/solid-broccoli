@@ -1,4 +1,5 @@
 import { Ability, AnswersQuestions, UsesAbilities } from '@serenity-js/core';
+import { DataType, Rule } from '../../../../../lib';
 
 export class GenerateData implements Ability {
   static locally() {
@@ -8,43 +9,40 @@ export class GenerateData implements Ability {
     return actor.abilityTo(GenerateData);
   }
   currentDataType?: DataType;
-  currentDataGenerator?: DataGenerator;
+  currentRule?: Rule;
   generatedData?: any;
   async createDataType(options: {
     name?: string;
     uuid?: string;
-    baseType?: string;
-    schema?: string;
   }): Promise<DataType> {
     const base = {
       name: 'test',
       uuid: 'asdf',
-      baseType: 'base',
-      schema: '',
     };
-    const { name, uuid, baseType, schema } = Object.assign({}, base, options);
+    const { name, uuid } = Object.assign({}, base, options);
     return new Promise((res) => {
-      const newDataType = new DataType(name, uuid, baseType, schema);
+      const newDataType = new DataType(name, uuid);
       this.currentDataType = newDataType;
       res(newDataType);
     });
   }
-  async createDataGenerator(
+  async createRule(
+    name:string,
     type: DataType,
     generate: () => any[],
-  ): Promise<DataGenerator> {
-    const newDataGenerator = new DataGenerator(type, generate);
+  ): Promise<Rule> {
+    const newRule = new Rule(name, type, generate);
     return new Promise((res) => {
-      this.currentDataGenerator = newDataGenerator;
-      res(newDataGenerator);
+      this.currentRule = newRule;
+      res(newRule);
     });
   }
-  async generateData(dataGenerator?: DataGenerator) {
-    if (dataGenerator == undefined) {
-      dataGenerator = this.currentDataGenerator;
+  async generateData(rule?: Rule) {
+    if (rule == undefined) {
+      rule = this.currentRule;
     }
     this.generatedData = await new Promise((res) =>
-      res(dataGenerator!.generate()),
+      res(rule!.generate()),
     );
   }
 }

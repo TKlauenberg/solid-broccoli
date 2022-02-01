@@ -1,13 +1,18 @@
 {
   "extends": "../packages.tsconfig.json",
   "compilerOptions": {
-    "module": "commonjs"
+    "module": "commonjs",
+    // needed because cucumber uses synthetic default imports
+    "allowSyntheticDefaultImports": true,
+    "strict": false,
+    "resolveJsonModule": true
   },
-  "include": [
-    "./lib/**/*.ts",
-    "./features/**/*.ts",
+  "plugins": [
+    {
+      "name": "typescript-strict-plugin",
+      "paths": ["./lib", "./featurs"]
+    }
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["./lib/**/*.ts", "./features/**/*.ts"],
+  "exclude": ["node_modules"]
 }
