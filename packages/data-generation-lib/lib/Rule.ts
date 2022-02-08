@@ -7,6 +7,6 @@ export class Rule {
     private generatorFunction: () => any,
   ) {}
   generate(): unknown {
-    throw new Error('Method not implemented.');
+    return this.generatorFunction()
   }
 }

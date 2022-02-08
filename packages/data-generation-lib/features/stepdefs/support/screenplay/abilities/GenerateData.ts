@@ -29,13 +29,16 @@ export class GenerateData implements Ability {
   async createRule(
     name:string,
     type: DataType,
-    generate: () => any[],
+    generate: () => unknown,
   ): Promise<Rule> {
     const newRule = new Rule(name, type, generate);
     return new Promise((res) => {
       this.currentRule = newRule;
       res(newRule);
     });
+  }
+  async setRule(rule: Rule) {
+    this.currentRule = rule
   }
   async generateData(rule?: Rule) {
     if (rule == undefined) {

@@ -1,11 +1,18 @@
 import { Given, Then, When } from '@cucumber/cucumber';
-import { Ensure, isGreaterThan, isLessThan } from '@serenity-js/assertions';
+import {
+  Ensure,
+  equals,
+  isGreaterThan,
+  isLessThan,
+  or,
+} from '@serenity-js/assertions';
 import {
   actorCalled,
   actorInTheSpotlight,
-  Expectation
+  Expectation,
+  Log,
 } from '@serenity-js/core';
-import { CreateNumberGenerator } from './support/screenplay/interactions/CreateNumberGenerator';
+import { CreateIntegerGenerator } from './support/screenplay/interactions/CreateIntegerGenerator';
 import { generateData } from './support/screenplay/interactions/GenerateData';
 import { CurrentGeneratedData } from './support/screenplay/questions';
 import { IsNumberOfType } from './support/screenplay/questions/Number';
@@ -13,7 +20,7 @@ import { IsNumberOfType } from './support/screenplay/questions/Number';
 Given(
   '{word} creates a random number type with integer generation between {int} and {int}',
   (name: string, min: number, max: number) =>
-    actorCalled(name).attemptsTo(CreateNumberGenerator.between(min).and(max)),
+    actorCalled(name).attemptsTo(CreateIntegerGenerator.between(min).and(max)),
 );
 
 When('he/she/they generates a data entry', () =>
@@ -22,8 +29,9 @@ When('he/she/they generates a data entry', () =>
 
 Then('the data entry is between {int} and {int}', (min: number, max: number) =>
   actorInTheSpotlight().attemptsTo(
-    Ensure.that(CurrentGeneratedData, isGreaterThan(min)),
-    Ensure.that(CurrentGeneratedData, isLessThan(max)),
+    Ensure.that(CurrentGeneratedData, or(isGreaterThan(min), equals(min))),
+    Ensure.that(CurrentGeneratedData, or(isLessThan(max), equals(max))),
+    Log.the(CurrentGeneratedData),
   ),
 );
 
@@ -34,10 +42,6 @@ function isOfType(expected: string): Expectation<any> {
   ).soThat(
     (actualValue, expectedValue) => typeof actualValue === expectedValue,
   );
-}
-
-function isAnInteger(): Expectation<any, number> {
-  return Expectation.to<number>('is an integer').soThatActual();
 }
 
 Then('the data entry is integer', () =>

@@ -3,26 +3,22 @@ import {
   Interaction,
   UsesAbilities,
 } from '@serenity-js/core';
+import { Integer } from '../../../../../lib';
 import { GenerateData } from '../abilities';
 
-export class CreateNumberGenerator extends Interaction {
+export class CreateIntegerGenerator extends Interaction {
   static between(start: number) {
     return {
-      and: (end: number) => new CreateNumberGenerator(start, end),
+      and: (end: number) => new CreateIntegerGenerator(start, end),
     };
   }
   constructor(private min: number, private max: number) {
     super();
   }
-  get betweenFunction() {
-    return () => {
-      return [Math.floor(Math.random() * (this.max - this.min + 1) + this.min)];
-    };
-  }
   async performAs(actor: UsesAbilities & AnswersQuestions): Promise<void> {
     const generateData = actor.abilityTo(GenerateData);
-    const dataType = await generateData.createDataType({});
-    await generateData.createRule('between', dataType, this.betweenFunction);
+    const rule = Integer.between(this.min, this.max);
+    await generateData.setRule(rule);
   }
 
   toString(): string {
