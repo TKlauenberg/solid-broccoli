@@ -6,7 +6,7 @@ export class Rule {
     public dataType: DataType,
     private generatorFunction: () => any,
   ) {}
-  generate(): unknown {
-    return this.generatorFunction()
+  generate(amount: number): Array<any> {
+    return new Array(amount).fill(undefined).map(this.generatorFunction)
   }
 }

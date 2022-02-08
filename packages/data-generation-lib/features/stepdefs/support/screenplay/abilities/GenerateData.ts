@@ -27,7 +27,7 @@ export class GenerateData implements Ability {
     });
   }
   async createRule(
-    name:string,
+    name: string,
     type: DataType,
     generate: () => unknown,
   ): Promise<Rule> {
@@ -38,14 +38,14 @@ export class GenerateData implements Ability {
     });
   }
   async setRule(rule: Rule) {
-    this.currentRule = rule
+    this.currentRule = rule;
   }
-  async generateData(rule?: Rule) {
+  async generateData(amount: number, rule?: Rule) {
     if (rule == undefined) {
       rule = this.currentRule;
     }
     this.generatedData = await new Promise((res) =>
-      res(rule!.generate()),
+      res(rule!.generate(amount)),
     );
   }
 }

@@ -2,3 +2,4 @@ lib/**/*.js
 lib/**/*.js.map
 features/**/*.js
 features/**/*.js.map
+!.eslintrc.js
