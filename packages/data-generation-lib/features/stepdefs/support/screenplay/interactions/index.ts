@@ -1,2 +1,2 @@
-export * from './CreateIntegerGenerator';
+export * from './CreateNumberGenerator';
 export * from './GenerateData';

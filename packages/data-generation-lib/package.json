@@ -20,7 +20,8 @@
     "build": "tsc -p ./tsconfig.json",
     "watch": "tsc -w -p ./tsconfig.json",
     "cucumber": "cucumber-js",
-    "test": "cucumber-js"
+    "test": "cucumber-js",
+    "test-generate": "cucumber-js -p generate"
   },
   "bugs": {
     "url": "https://github.com/TKlauenberg/solid-broccoli/issues"

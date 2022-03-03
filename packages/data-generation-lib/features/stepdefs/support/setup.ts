@@ -10,7 +10,7 @@ configure({
   crew: [
     ArtifactArchiver.storingArtifactsAt('./target/site/serenity'),
     new SerenityBDDReporter(),
-    ConsoleReporter.forDarkTerminals(),
+    // ConsoleReporter.forDarkTerminals(),
   ],
 });
 
