@@ -1,0 +1,5 @@
+type Person{
+  name=string.word{asdf};
+  age=int.between{abc,asdf};
+  birthday=datetime.nearFuture{asdf};
+}
